@@ -56,9 +56,14 @@ li {
 </script>
 <script>
 
-//var tabId = chrome.extension.getBackgroundPage().selectedTabId;
+var currentTabId
 var     url = chrome.extension.getBackgroundPage().selectedURL;
 var   title = chrome.extension.getBackgroundPage().selectedTitle;
+
+chrome.tabs.getSelected(null, function(tab) {
+  currentTabId = tab.id;
+});
+
 
 url = encodeURIComponent(url);
 var submitUrl = "http://www.reddit.com/submit?url=" + url;
@@ -103,14 +108,13 @@ function parseURLData(jsonData)
     $("#data").append("<h4>"+title+"</h4>");
     if(submitCount) {
         $("#data").append("<div id=\"submission_status\"><span id=\"submitnumber\">submitted "+
-                submitCount + " times.</span><a title='Post to reddit'"+
-            " target='_blank' href='" + resubmitUrl + 
-            "'>resubmit<a></div>");
+                submitCount + " times | </span> <a title=\"Post to reddit\""+
+            " target=\"_blank\" href=\"" + resubmitUrl + 
+            "\">resubmit</a></div>");
     }
     else {
-        $("#data").append("<p style='color:green;'>Not Submitted Yet!</p><p>"+
-            "<a target='_blank' title='Post to reddit' href='"+submitUrl+
-            "'>Reddit this!</a></p>");
+        $("#data").append("<div id=\"submission_status\"><a target=\"_blank\" title=\"Post to reddit\" href=\""+submitUrl+"\">Reddit this!</a></div>");
+        chrome.browserAction.setBadgeText({"text": "???", tabId: selectedId});
     }
     showLinks();
 }
