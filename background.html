@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<!-- 
+ Copyright (C) 2010  Hrishikesh Bakshi
+ For permissions, check LICENSE file in this folder.
+-->
+<script src="jquery.min.js" language="javascript"></script>
+<script type="text/javascript">
+var selectedTabId = 0;
+var selectedURL = "";
+var selectedTitle = "";
+
+function updateGlobal(tab) {
+        selectedTabId = tab.id;
+        selectedURL = tab.url;
+        selectedTitle = tab.title;
+}
+
+// update on selection
+chrome.tabs.getSelected(null, updateGlobal);
+
+// update on URL update
+chrome.tabs.onUpdated.addListener(function(tabId, change, tab) {
+        if(tab.id === selectedTabId){
+            updateGlobal(tab);
+            getURLInfo(selectedURL);
+        }
+});
+
+// update on selection change
+chrome.tabs.onSelectionChanged.addListener(function(tabId, info) {
+        chrome.tabs.get(tabId, updateGlobal);
+       // alert('Now the selection is ' + selectedTabId + '\n\n' + selectedURL);
+        getURLInfo(selectedURL);
+});
+
+url = encodeURIComponent(selectedURL);
+
+// get URL info
+function getURLInfo(url)
+{
+    var redditUrl = "http://www.reddit.com/api/info.json?url=" +url;
+    $.getJSON(
+        redditUrl,
+        checkSubmission
+    );
+}
+
+function checkSubmission(jsonData){
+    if (jsonData.data.children[0] === undefined){
+        chrome.browserAction.setBadgeBackgroundColor({"color": [255, 0, 0, 255], "tabId": selectedTabId});
+        chrome.browserAction.setBadgeText({"text": "?", "tabId": selectedTabId});
+    }
+    else{
+        chrome.browserAction.setBadgeBackgroundColor({"color": [0, 215, 0, 255], "tabId": selectedTabId});
+        chrome.browserAction.setBadgeText({"text": "Y", "tabId": selectedTabId});
+    }
+}
+
+function pause(milliseconds) {
+    var dt = new Date();
+    while ((new Date()) - dt <= milliseconds) { /* Do nothing */ }
+}
+
+</script>
+

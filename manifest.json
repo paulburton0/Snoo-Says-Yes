@@ -1,19 +1,19 @@
 {
-  "name": "Redditizer",
-  "version": "1.0",
-  "description": "Quickly check if the page you're viewing has been submitted to Reddit.",
-  "icons": { "16": "images/16x16.png",
-             "48": "images/48x48.png",
-             "128": "images/128x128.png" },
+  "name": "Better Reddit Chec ",
+  "version": "0.1",
+  "description": "Check whether current URL is submitted on reddit. Jump right into the discussion if the link is already submitted.",
+  "icons": {
+      "64": "alien64.png",
+      "32": "alien32.png"
+   },
+  "background_page": "background.html",
   "browser_action": {
-     "default_title": "Redditize this link",
-     "default_icon": "images/19x19.png"
+    "default_icon": "alien64.png",
+    "default_title": "Reddited",
+    "default_popup":"popup.html"
   },
-  "background_page": "bg.html",
   "permissions": [
     "tabs",
-    "http://*/*",
-    "https://*/*"
+    "http://www.reddit.com/*"
   ]
 }
-

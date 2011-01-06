@@ -13,6 +13,14 @@ body {
   font-size: 16px;
 }
 
+a {
+    text-decoration: none;
+}
+
+a.hover {
+    font-weight: bold;
+}
+
 h4 {
     padding: 0px 0px 0px 0px;
     margin: 0px 0px 5px 0px;
@@ -56,14 +64,8 @@ li {
 </script>
 <script>
 
-var currentTabId
 var     url = chrome.extension.getBackgroundPage().selectedURL;
 var   title = chrome.extension.getBackgroundPage().selectedTitle;
-
-chrome.tabs.getSelected(null, function(tab) {
-  currentTabId = tab.id;
-});
-
 
 url = encodeURIComponent(url);
 var submitUrl = "http://www.reddit.com/submit?url=" + url;
@@ -108,13 +110,12 @@ function parseURLData(jsonData)
     $("#data").append("<h4>"+title+"</h4>");
     if(submitCount) {
         $("#data").append("<div id=\"submission_status\"><span id=\"submitnumber\">submitted "+
-                submitCount + " times | </span> <a title=\"Post to reddit\""+
-            " target=\"_blank\" href=\"" + resubmitUrl + 
+                submitCount + " times | </span> <a target=\"_blank\" title=\"Post to reddit\""+
+            " href=\"" + resubmitUrl + 
             "\">resubmit</a></div>");
     }
     else {
         $("#data").append("<div id=\"submission_status\"><a target=\"_blank\" title=\"Post to reddit\" href=\""+submitUrl+"\">Reddit this!</a></div>");
-        chrome.browserAction.setBadgeText({"text": "???", tabId: selectedId});
     }
     showLinks();
 }
@@ -127,9 +128,9 @@ function showLinks() {
             $("#links").append(
                 "<li>"+ 
                 "<div class=\"linkblock\"><div class=\"score\">"+permalink.score+"</div>"+
-                    "<div class=\"linktext\"><a href=\"http:\\\\www.reddit.com" +
+                    "<div class=\"linktext\"><a target=\"_blank\" href=\"http:\\\\www.reddit.com" +
                 permalink.link + "\" title=\""+
-                permalink.link + "\" target=\"_blank\" >"+
+                permalink.link + "\">"+
                 permalink.title + "</a>"+
                 "<div class=\"age\">"+permalink.age+ " days ago "+
                 permalink.comments+" comments r/"+permalink.subreddit+
