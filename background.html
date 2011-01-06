@@ -30,7 +30,6 @@ chrome.tabs.onUpdated.addListener(function(tabId, change, tab) {
 // update on selection change
 chrome.tabs.onSelectionChanged.addListener(function(tabId, info) {
         chrome.tabs.get(tabId, updateGlobal);
-       // alert('Now the selection is ' + selectedTabId + '\n\n' + selectedURL);
         getURLInfo(selectedURL);
 });
 
@@ -56,11 +55,5 @@ function checkSubmission(jsonData){
         chrome.browserAction.setBadgeText({"text": "Y", "tabId": selectedTabId});
     }
 }
-
-function pause(milliseconds) {
-    var dt = new Date();
-    while ((new Date()) - dt <= milliseconds) { /* Do nothing */ }
-}
-
 </script>
 
