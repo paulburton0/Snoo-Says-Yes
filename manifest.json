@@ -3,17 +3,19 @@
   "version": "0.1",
   "description": "Check whether current URL is submitted on reddit. Jump right into the discussion if the link is already submitted.",
   "icons": {
-      "64": "alien64.png",
-      "32": "alien32.png"
+      "16": "alien16.png",
+      "48": "alien48.png",
+      "128": "alien128.png"
    },
   "background_page": "background.html",
   "browser_action": {
-    "default_icon": "alien64.png",
+    "default_icon": "alien48.png",
     "default_title": "Reddited",
     "default_popup":"popup.html"
   },
   "permissions": [
     "tabs",
     "http://www.reddit.com/*"
-  ]
+  ],
+  "incognito": "split"
 }
