@@ -1,5 +1,5 @@
 {
-  "name": "Better Reddit Chec ",
+  "name": "Better Reddit Check",
   "version": "0.1",
   "description": "Check whether current URL is submitted on reddit. Jump right into the discussion if the link is already submitted.",
   "icons": {
