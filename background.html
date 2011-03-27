@@ -1,9 +1,5 @@
 <!doctype html>
 <html>
-<!-- 
- Copyright (C) 2010  Hrishikesh Bakshi
- For permissions, check LICENSE file in this folder.
--->
 <script src="jquery.min.js" language="javascript"></script>
 <script type="text/javascript">
 var selectedTabId = 0;
@@ -28,9 +24,17 @@ chrome.tabs.onUpdated.addListener(function(tabId, change, tab) {
 });
 
 // update on selection change
-chrome.tabs.onSelectionChanged.addListener(function(tabId, info) {
-        chrome.tabs.get(tabId, updateGlobal);
-        getURLInfo(selectedURL);
+//chrome.tabs.onSelectionChanged.addListener(function(tabId, info) {
+//        chrome.tabs.get(tabId, updateGlobal);
+//        getURLInfo(selectedURL);
+//});
+
+chrome.tabs.onSelectionChanged.addListener(function(tabId, selectInfo){
+            chrome.tabs.getSelected(null, function(tab){
+                        updateGlobal(tab);
+                        getURLInfo(tab.url);
+                        //checkForValidUrl(tab);
+                            });
 });
 
 url = encodeURIComponent(selectedURL);
