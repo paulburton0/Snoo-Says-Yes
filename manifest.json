@@ -1,7 +1,8 @@
 {
   "name": "Better Reddit Check",
-  "version": "0.2",
+  "version": "0.3",
   "description": "Check whether current URL is submitted on reddit. Jump right into the discussion if the link is already submitted.",
+  "options_page": "options.html",
   "icons": {
       "16": "alien16.png",
       "48": "alien48.png",
