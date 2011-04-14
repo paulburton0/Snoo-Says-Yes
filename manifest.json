@@ -16,7 +16,6 @@
   },
   "permissions": [
     "tabs",
-    "http://www.reddit.com/*"
   ],
   "incognito": "split"
 }
