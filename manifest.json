@@ -15,7 +15,9 @@
     "default_popup":"popup.html"
   },
   "permissions": [
-    "tabs"
+    "tabs",
+    "http://*/*",
+    "https://*/*"
   ],
   "incognito": "split"
 }
