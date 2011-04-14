@@ -1,21 +1,21 @@
 {
-  "name": "Better Reddit Check",
-  "version": "0.3",
-  "description": "Check whether current URL is submitted on reddit. Jump right into the discussion if the link is already submitted.",
-  "options_page": "options.html",
-  "icons": {
-      "16": "alien16.png",
-      "48": "alien48.png",
-      "128": "alien128.png"
+  "name":"Better Reddit Check",
+  "version":"0.4",
+  "description":"Check whether current URL is submitted on reddit. Jump right into the discussion if the link is already submitted.",
+  "options_page":"options.html",
+  "icons":{
+      "16":"alien16.png",
+      "48":"alien48.png",
+      "128":"alien128.png"
    },
-  "background_page": "background.html",
-  "browser_action": {
-    "default_icon": "alien48.png",
-    "default_title": "Reddited",
+  "background_page":"background.html",
+  "browser_action":{
+    "default_icon":"alien48.png",
+    "default_title":"Reddited",
     "default_popup":"popup.html"
   },
-  "permissions": [
+  "permissions":[
     "tabs",
   ],
-  "incognito": "split"
+  "incognito":"split"
 }
