@@ -36,7 +36,7 @@ url = encodeURIComponent(selectedURL);
 // get URL info
 function getURLInfo(url)
 {
-    var redditUrl = "http://www.reddit.com/api/info.json?url=" +url;
+    var redditUrl = 'http://www.reddit.com/api/info.json?url=' +url;
     $.getJSON(
         redditUrl,
         checkSubmission
@@ -45,17 +45,16 @@ function getURLInfo(url)
 
 function checkSubmission(jsonData){
     if (jsonData.data.children[0] === undefined){
-        if(localStorage["hideStatus"] === "show" || localStorage["hideStatus"] === undefined){
+        if(localStorage["hideStatus"] == 'show' || localStorage["hideStatus"] === undefined){
             chrome.browserAction.setBadgeBackgroundColor({"color": [255, 0, 0, 255], "tabId": selectedTabId});
             chrome.browserAction.setBadgeText({"text": "?", "tabId": selectedTabId});
         }
     }
     else{
-        if(localStorage["hideStatus"] === 'show' || localStorage["hideStatus"] === undefined){
+        if(localStorage["hideStatus"] == 'show' || localStorage["hideStatus"] === undefined){
             chrome.browserAction.setBadgeBackgroundColor({"color": [0, 215, 0, 255], "tabId": selectedTabId});
             chrome.browserAction.setBadgeText({"text": "Y", "tabId": selectedTabId});
         }
     }
 }
 </script>
-
