@@ -3,25 +3,22 @@ $(document).ready(function(){
         localStorage["hideStatus"] = 'show';
     }
 
-    var hideStatus = localStorage["hideStatus"];
-
-    if ( hideStatus == 'hide' ) {
-        $('input[name=hideStatusOption]').attr('checked', true);
+    if ( localStorage["hideStatus"] == 'hide' ) {
+        $('#hideStatus').attr('checked', "checked");
     }
 
     else {
-        $('input[name=hideStatusOption]').removeAttr('checked');
+        $('#hideStatus').removeAttr('checked');
     }
 
-    $('#saveOptions').click(function() {
-        if ($('#hideStatusOption').attr('checked')) {
+    $('#hideStatus').click(function(){
+        if ($('#hideStatus').attr('checked')) {
             localStorage["hideStatus"] = 'hide';
-            alert('Status badges will be hidden.');
+            $('#save').fadeIn(1200, function(){$('#save').fadeOut(2000);});
         }
-
-        else {
+        else{
             localStorage["hideStatus"] = 'show';
-            alert('Status badges will be displayed.');
+            $('#save').fadeIn(1200, function(){$('#save').fadeOut(2000);});
         }
     });
 });

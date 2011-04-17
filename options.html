@@ -19,10 +19,10 @@
                 font:sans-serif;
                 text-align:center;
             }
-            #saveOptions {
-                width:60px;
-                margin-top:15px; 
-                margin-left:270px;
+            #save{
+                color:red;
+                display:none;
+                font-weight:bold;
             }
         </style>
 
@@ -33,9 +33,7 @@
             <div id="title">
                 Better Reddit Check Options
             </div>
-        <input type="checkbox" id="hideStatusOption" name="hideStatusOption" value="hide" /> hide status badges ('Y' and '?') on toolbar icon
-        <br />
-        <button id="saveOptions">Save</button>
+            <input type="checkbox" id="hideStatus" name="hideStatus" value="hide" /> hide status badges ('Y' and '?') on toolbar icon <span id="save">Saved</span>
     </div>
     </body>
 </html>
