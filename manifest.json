@@ -1,7 +1,7 @@
 {
   "name": "Better Reddit Check",
-  "version": "0.5",
-  "description": "Check whether current URL is submitted on reddit. Jump right into the discussion if the link is already submitted.",
+  "version": "0.6",
+  "description": "Instant visual feedback whether a URL has been submitted to Reddit. Easily join the discussion or submit right from the toolbar.",
   "options_page": "options.html",
   "icons": {
       "16": "alien16.png",
@@ -11,7 +11,7 @@
   "background_page": "background.html",
   "browser_action": {
     "default_icon": "alien48.png",
-    "default_title": "Reddited",
+    "default_title": "",
     "default_popup":"popup.html"
   },
   "permissions": [
@@ -21,4 +21,3 @@
   ],
   "incognito": "split"
 }
-

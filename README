@@ -1,16 +1,15 @@
-    Better-Reddit-check
+Better Reddit Check 
 
- Better-Reddit-check is a Google Chrome / Chromium extension based on 
- the Reddit-Check extension created by Hrishikesh Bakshi.
- This extension lets you check whether the current URL you are on has been 
- submitted to reddit. You can jump right into the discussion if the link 
- has already been submitted. Otherwise a 'Submit this link' option 
- is provided to go to reddit link submission page.
+Based on the Reddit Check extension by Hrishikesh Bakshi. Receive instant
+visual feedback whether any URL has been submitted to Reddit. If the page
+you're on has been submitted, you can open a new tab to join the
+discussion, or you can resubmit the link. If the link hasn't been
+submitted, you can start a new submission right from the Chrome toolbar.
 
- It is distributed under the GNU General Public License - see the 
- accompanying LICENSE file for more details.
+It is distributed under the GNU General Public License - see the
+accompanying LICENSE file for more details.
  
- This extension was modified/created by  paulburton0 [at] gmail.com
+This extension was modified/created by  paulburton0 [at] gmail.com
  
- Extension install link: 
- https://chrome.google.com/extensions/detail/bnikifloagjncfjbniboapgdehnlemmd
+Extension install link:
+https://chrome.google.com/extensions/detail/bnikifloagjncfjbniboapgdehnlemmd
