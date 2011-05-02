@@ -79,8 +79,8 @@ function showLinks() {
                 permalink.link + '" title="' +
                 permalink.link + '">' +
                 permalink.title + '</a>' +
-                '<div class="age">submitted ' + permalink.age + ' ' +
-                permalink.comments + ' comments r/' + permalink.subreddit +
+                '<div class="age">submitted ' + permalink.age + ' &bull; ' +
+                permalink.comments + ' comments &bull; r/' + permalink.subreddit +
                 '</div></div></div>' +
                 '</li>'
             );
