@@ -45,16 +45,26 @@ function getURLInfo(url)
 
 function checkSubmission(jsonData){
     if (jsonData.data.children[0] === undefined){
+        chrome.browserAction.setTitle({"title": "Not Reditted", "tabId": selectedTabId});
         if(localStorage["hideStatus"] == 'show' || localStorage["hideStatus"] === undefined){
             chrome.browserAction.setBadgeBackgroundColor({"color": [255, 0, 0, 255], "tabId": selectedTabId});
-            chrome.browserAction.setBadgeText({"text": "?", "tabId": selectedTabId});
+            chrome.browserAction.setBadgeText({"text": "N", "tabId": selectedTabId});
         }
     }
-    else{
+    else {
+        chrome.browserAction.setTitle({"title": "Reditted", "tabId": selectedTabId});
         if(localStorage["hideStatus"] == 'show' || localStorage["hideStatus"] === undefined){
             chrome.browserAction.setBadgeBackgroundColor({"color": [0, 215, 0, 255], "tabId": selectedTabId});
             chrome.browserAction.setBadgeText({"text": "Y", "tabId": selectedTabId});
         }
     }
+
+/*    else {
+        if(localStorage["hideStatus"] == 'show' || localStorage["hideStatus"] === undefined){
+            chrome.browserAction.setBadgeBackgroundColor({"color": [0, 0, 0, 255], "tabId": selectedTabId});
+            chrome.browserAction.setBadgeText({"text": "???", "tabId": selectedTabId});
+            chrome.browserAction.setTitle({"title": "API Error", "tabId": selectedTabId});
+        }
+    } */
 }
 </script>
