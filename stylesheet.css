@@ -37,16 +37,15 @@ li {
     margin: 5px 0px 5px 0px;
     width: 400px;
     background-color: rgb(196, 224, 255);
-    border-color: rgb(99, 172, 255);
-}
-
-#data {
-    width: 430px;
+    border-style: solid;
+    border-color: rgb(83, 143, 212);
+    border-width: 1px;
+    border-radius: 5px;
 }
 
 .age {
     font-size: 10px;
-    color: #909090;
+    color: #808080;
 }
 
 .score {
@@ -62,6 +61,8 @@ li {
     float: right;
     width: 16px;
     height: 16px;
+    margin-left: 5px;
+    margin-bottom: 5px;
 }
 
 #wrapper {
