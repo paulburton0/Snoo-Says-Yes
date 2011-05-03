@@ -1,73 +1,30 @@
 <!doctype html>
 <html>
-<head>
-<style>
-body {
-  min-width: 400px;
-  overflow-x: hidden;
-  font-family: sans-serif;
-  font-size: 16px;
-}
 
-a {
-    text-decoration: none;
-}
+    <head>
 
-a.hover {
-    font-weight: bold;
-}
+        <link href="stylesheet.css" rel="stylesheet" type="text/css">
 
-h4 {
-    padding: 0px 0px 0px 0px;
-    margin: 0px 0px 5px 0px;
-}
+        <script src="jquery.min.js" language="javascript"></script>
+        <script src="popup.js" language="javascript"></script>
 
-#submitnumber {
-    font-size: 14px;
-    font-weight: bold;
-}
+    </head>
 
-li {
-    list-style-type: none;
-    padding: 5px 5px 5px 5px;
-    margin: 5px 0px 5px 0px;
-    width: 400px;
-    background-color: rgb(196, 224, 255);
-    border-color: rgb(99, 172, 255);
-}
+    <body id="popup-body">
 
-#data {
-    width: 430px;
-}
+        <div id="data">
+            <div id="close"><img src="close.png" /></div>
+        </div>
+        <div id="links">
+        </div>
+        <div id="timeout">
+            Loading... please wait.
+        </div>
 
-.age {
-    font-size: 10px;
-    color: #909090;
-}
+        <script type="text/javascript">
+        getURLInfo(url);
+        </script>
 
-.score {
-    height: 100%;
-    padding: 0px 7px 0px 0px;
-    text-align: center;
-    float: left;
-    font-weight: bold;
-    color: #FF8B60;
-    
-}
-</style>
-<script src="jquery.min.js" language="javascript"></script>
-<script src="popup.js" language="javascript"></script>
-</head>
-<body>
-    <div id="data">
-    </div>
-    <div id="links">
-    </div>
-    <div id="timeout">
-        Loading... please wait.
-    </div>
-    <script type="text/javascript">
-    getURLInfo(url);
-    </script>
-</body>
+    </body>
+
 </html>
