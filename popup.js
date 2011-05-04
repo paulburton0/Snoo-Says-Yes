@@ -20,7 +20,6 @@ $(document).ready(function(){
 
 // get URL info
 function getURLInfo(url){
-
     var redditUrl = 'http://www.reddit.com/api/info.json?url=' +url;
     $.getJSON(
         redditUrl,
@@ -34,7 +33,7 @@ function parseURLData(jsonData){
     $('div#timeout').hide(0);
     var data = [ 0, "", "", "", "", "", "", "", "", url];
 
-    for( var i=0; entry = jsonData.data.children[i]; i++) {
+    for(var i=0; entry = jsonData.data.children[i]; i++){
             submitCount +=1;
             entryDate = new Date(entry.data.created_utc*1000).getTime();
             permalinks[i] = {
@@ -47,34 +46,31 @@ function parseURLData(jsonData){
             };
     }
     
-    if(submitCount) {
-        
+    if(submitCount){
         var submissionLabel;
 
         if(submitCount == 1){
             submissionLabel = 'time';
         }
-
         else{
             submissionLabel = 'times';
         }
 
         $('#data').append('<h4>' + title + '</h4>');
         $('#data').append('<div id="submission_status"><span id="submitnumber">submitted ' +
-            submitCount + ' ' + submissionLabel + ' | </span> <a target="_blank" title="Post to reddit"' +
+            submitCount + ' ' + submissionLabel + ' | </span> <a target="_blank" title="Submit to reddit"' +
             ' href="' + resubmitUrl + 
             '">resubmit</a></div>');
         
         showLinks();
     }
-
-    else {
+    else{
         if(localStorage["hideStatus"] == 'hide'){
             $('#data').append('<h4>' + title + '</h4>');
             $('#data').append('<div id="submission_status"><a target="_blank" title="Submit to reddit"' +
                 ' href="' + submitUrl + '">submit</a></div>');
         }
-        else {
+        else{
             chrome.tabs.create({
                 url: submitUrl
             });
@@ -84,11 +80,11 @@ function parseURLData(jsonData){
     }
 }
 
-function showLinks() {
+function showLinks(){
     if(submitCount)
     $.each(
         permalinks,
-        function(index, permalink) {
+        function(index, permalink){
             $('#links').append(
                 '<li>' + 
                 '<div class="linkblock"><div class="score">' +permalink.score+'</div>' +
@@ -107,8 +103,8 @@ function showLinks() {
 
 function closePopup(){
     // remove popup by selecting the tab
-    chrome.tabs.getSelected(null, function(tab) {
-        chrome.tabs.update(tab.id, { selected: true });
+    chrome.tabs.getSelected(null, function(tab){
+        chrome.tabs.update(tab.id, {selected: true});
     });
 }
 
@@ -116,10 +112,9 @@ function parseAge(entryDateMs){
     var submitted;
     var ageDays = Math.ceil((dateNow - entryDateMs) / oneDay);
     
-    if ( ageDays <= 1 ){
+    if (ageDays <= 1){
         submitted = 'today';
     }
-
     else {
         submitted = ageDays + ' days ago';
     }

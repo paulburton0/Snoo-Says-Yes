@@ -1,70 +1,66 @@
 <!doctype html>
 <html>
-<script src="jquery.min.js" language="javascript"></script>
-<script type="text/javascript">
-var selectedTabId = 0;
-var selectedURL = "";
-var selectedTitle = "";
+    <head>
+        <script src="jquery.min.js" language="javascript"></script>
 
-function updateGlobal(tab) {
-        selectedTabId = tab.id;
-        selectedURL = tab.url;
-        selectedTitle = tab.title;
-}
+        <script type="text/javascript">
 
-// update on selection
-chrome.tabs.getSelected(null, updateGlobal);
+        var selectedTabId;
+        var selectedURL;
+        var selectedTitle;
 
-// update on URL update
-chrome.tabs.onUpdated.addListener(function(tabId, change, tab) {
-        if(tab.id === selectedTabId){
-            updateGlobal(tab);
-            getURLInfo(selectedURL);
+        function updateGlobal(tab){
+                selectedTabId = tab.id;
+                selectedURL   = tab.url;
+                selectedTitle = tab.title;
         }
-});
 
+        // update on selection
+        chrome.tabs.getSelected(null, updateGlobal);
 
-chrome.tabs.onSelectionChanged.addListener(function(tabId, selectInfo){
-            chrome.tabs.getSelected(null, function(tab){
-                        updateGlobal(tab);
-                        getURLInfo(tab.url);
-            });
-});
+        // update on URL update
+        chrome.tabs.onUpdated.addListener(function(tabId, change, tab){
+                if(tab.id === selectedTabId){
+                    updateGlobal(tab);
+                    getURLInfo(selectedURL);
+                }
+        });
 
-url = encodeURIComponent(selectedURL);
+        chrome.tabs.onSelectionChanged.addListener(function(tabId, selectInfo){
+                chrome.tabs.getSelected(null, function(tab){
+                    updateGlobal(tab);
+                    getURLInfo(selectedURL);
+                });
+        });
 
-// get URL info
-function getURLInfo(url)
-{
-    var redditUrl = 'http://www.reddit.com/api/info.json?url=' +url;
-    $.getJSON(
-        redditUrl,
-        checkSubmission
-    );
-}
-
-function checkSubmission(jsonData){
-    if (jsonData.data.children[0] === undefined){
-        chrome.browserAction.setTitle({"title": "Not Reditted", "tabId": selectedTabId});
-        if(localStorage["hideStatus"] == 'show' || localStorage["hideStatus"] === undefined){
-            chrome.browserAction.setBadgeBackgroundColor({"color": [255, 0, 0, 255], "tabId": selectedTabId});
-            chrome.browserAction.setBadgeText({"text": "N", "tabId": selectedTabId});
+        // get URL info
+        function getURLInfo(url){
+            url = encodeURIComponent(url);
+            var redditUrl = 'http://www.reddit.com/api/info.json?url=' + url;
+            $.getJSON(
+                redditUrl,
+                checkSubmission
+            );
         }
-    }
-    else {
-        chrome.browserAction.setTitle({"title": "Reditted", "tabId": selectedTabId});
-        if(localStorage["hideStatus"] == 'show' || localStorage["hideStatus"] === undefined){
-            chrome.browserAction.setBadgeBackgroundColor({"color": [0, 215, 0, 255], "tabId": selectedTabId});
-            chrome.browserAction.setBadgeText({"text": "Y", "tabId": selectedTabId});
-        }
-    }
 
-/*    else {
-        if(localStorage["hideStatus"] == 'show' || localStorage["hideStatus"] === undefined){
-            chrome.browserAction.setBadgeBackgroundColor({"color": [0, 0, 0, 255], "tabId": selectedTabId});
-            chrome.browserAction.setBadgeText({"text": "???", "tabId": selectedTabId});
-            chrome.browserAction.setTitle({"title": "API Error", "tabId": selectedTabId});
+        function checkSubmission(jsonData){
+            if(jsonData.data.children[0] === undefined){
+                chrome.browserAction.setTitle({"title": "Not Reditted", "tabId": selectedTabId});
+                if(localStorage["hideStatus"] == 'show' || localStorage["hideStatus"] === undefined){
+                    chrome.browserAction.setBadgeBackgroundColor({"color": [255, 0, 0, 255], "tabId": selectedTabId});
+                    chrome.browserAction.setBadgeText({"text": "N", "tabId": selectedTabId});
+                }
+            }
+            else {
+                chrome.browserAction.setTitle({"title": "Reditted", "tabId": selectedTabId});
+                if(localStorage["hideStatus"] == 'show' || localStorage["hideStatus"] === undefined){
+                    chrome.browserAction.setBadgeBackgroundColor({"color": [0, 215, 0, 255], "tabId": selectedTabId});
+                    chrome.browserAction.setBadgeText({"text": "Y", "tabId": selectedTabId});
+                }
+            }
         }
-    } */
-}
-</script>
+        </script>
+    </head>
+    <body>
+    </body>
+</html>

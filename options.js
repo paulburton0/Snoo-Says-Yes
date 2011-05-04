@@ -1,18 +1,17 @@
 $(document).ready(function(){ 
-    if ( localStorage["hideStatus"] === undefined ) {
+    if(localStorage["hideStatus"] === undefined){
         localStorage["hideStatus"] = 'show';
     }
 
-    if ( localStorage["hideStatus"] == 'hide' ) {
-        $('#hideStatus').attr('checked', "checked");
+    if(localStorage["hideStatus"] == 'hide'){
+        $('#hideStatus').attr('checked', 'checked');
     }
-
-    else {
+    else{
         $('#hideStatus').removeAttr('checked');
     }
 
     $('#hideStatus').click(function(){
-        if ($('#hideStatus').attr('checked')) {
+        if ($('#hideStatus').attr('checked')){
             localStorage["hideStatus"] = 'hide';
             $('#save').fadeIn(1200, function(){$('#save').fadeOut(2000);});
         }
