@@ -1,4 +1,5 @@
 var url = chrome.extension.getBackgroundPage().selectedURL;
+var tabId = chrome.extension.getBackgroundPage().selectedTabId;
 var title = chrome.extension.getBackgroundPage().selectedTitle;
 
 url = encodeURIComponent(url);
@@ -15,6 +16,12 @@ $(document).ready(function(){
     // Close the popup when the close button is clicked
     $('#close').click(function(){
         closePopup();
+    });
+
+    $('.submission_link').live('click', function(e) {
+      var href = e.currentTarget.href;
+      chrome.tabs.update(tabId, {url: href});
+      closePopup();
     });
 });
 
@@ -88,7 +95,7 @@ function showLinks(){
             $('#links').append(
                 '<li>' + 
                 '<div class="linkblock"><div class="score">' +permalink.score+'</div>' +
-                    '<div class="linktext"><a target="_blank" href="http://www.reddit.com' +
+                    '<div class="linktext"><a class="submission_link" href="http://www.reddit.com' +
                 permalink.link + '" title="' +
                 permalink.link + '">' +
                 permalink.title + '</a>' +
@@ -121,3 +128,5 @@ function parseAge(entryDateMs){
 
     return submitted;
 }
+
+
