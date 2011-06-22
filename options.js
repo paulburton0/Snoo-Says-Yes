@@ -13,11 +13,32 @@ $(document).ready(function(){
     $('#hideStatus').click(function(){
         if ($('#hideStatus').attr('checked')){
             localStorage["hideStatus"] = 'hide';
-            $('#save').fadeIn(1200, function(){$('#save').fadeOut(2000);});
         }
         else{
             localStorage["hideStatus"] = 'show';
-            $('#save').fadeIn(1200, function(){$('#save').fadeOut(2000);});
         }
     });
+
+    if(localStorage["openDiscussion"] == 'newTab'){
+        $('#openInNewTab').attr('checked', 'checked');
+    }
+    else{
+        localStorage["openDiscussion"] = 'selectedTab';
+        $('#openInSelectedTab').attr('checked', 'checked');
+    }
+
+    $('#openInNewTab').click(function(){
+        localStorage["openDiscussion"] = 'newTab';
+        console.log('Discussions will open in new tabs');
+    });
+
+    $('#openInSelectedTab').click(function(){
+        localStorage["openDiscussion"] = 'selectedTab';
+        console.log('Discussions will open in the selected tab');
+    });
+
+    $('.option').click(function(){
+        $('#save').fadeIn(1200, function(){$('#save').fadeOut(1200);});
+    });
 });
+

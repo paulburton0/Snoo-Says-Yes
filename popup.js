@@ -1,6 +1,8 @@
 var url = chrome.extension.getBackgroundPage().selectedURL;
 var tabId = chrome.extension.getBackgroundPage().selectedTabId;
 var title = chrome.extension.getBackgroundPage().selectedTitle;
+var index = chrome.extension.getBackgroundPage().selectedIndex;
+
 
 url = encodeURIComponent(url);
 var submitUrl = 'http://www.reddit.com/submit?url=' + url;
@@ -11,6 +13,7 @@ var permalinks = [];
 var dateNow = new Date().getTime(); 
 var entryDate; 
 var oneDay = 86400000; // milliseconds
+var newIndex = index + 1;
 
 $(document).ready(function(){
     // Close the popup when the close button is clicked
@@ -18,11 +21,22 @@ $(document).ready(function(){
         closePopup();
     });
 
-    $('.submission_link').live('click', function(e) {
-      var href = e.currentTarget.href;
-      chrome.tabs.update(tabId, {url: href});
-      closePopup();
-    });
+    if(localStorage["openDiscussion"] == 'selectedTab'){
+        $('.submission_link').live('click', function(e){
+            var href = e.currentTarget.href;
+            chrome.tabs.update(tabId, {url: href});
+            closePopup();
+        });
+    }
+
+    if(localStorage["openDiscussion"] == 'newTab'){
+        $('.submission_link').live('click', function(e){
+            alert('opening in a new tab');
+            var href = e.currentTarget.href;
+            chrome.tabs.create({url: href, index: newIndex});
+            closePopup();
+        });
+    }
 });
 
 // get URL info
