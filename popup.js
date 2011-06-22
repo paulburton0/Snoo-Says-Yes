@@ -31,7 +31,6 @@ $(document).ready(function(){
 
     if(localStorage["openDiscussion"] == 'newTab'){
         $('.submission_link').live('click', function(e){
-            alert('opening in a new tab');
             var href = e.currentTarget.href;
             chrome.tabs.create({url: href, index: newIndex});
             closePopup();

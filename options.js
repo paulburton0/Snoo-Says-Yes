@@ -29,12 +29,10 @@ $(document).ready(function(){
 
     $('#openInNewTab').click(function(){
         localStorage["openDiscussion"] = 'newTab';
-        console.log('Discussions will open in new tabs');
     });
 
     $('#openInSelectedTab').click(function(){
         localStorage["openDiscussion"] = 'selectedTab';
-        console.log('Discussions will open in the selected tab');
     });
 
     $('.option').click(function(){
