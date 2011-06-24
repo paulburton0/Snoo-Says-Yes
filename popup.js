@@ -3,7 +3,6 @@ var tabId = chrome.extension.getBackgroundPage().selectedTabId;
 var title = chrome.extension.getBackgroundPage().selectedTitle;
 var index = chrome.extension.getBackgroundPage().selectedIndex;
 
-
 url = encodeURIComponent(url);
 var submitUrl = 'http://www.reddit.com/submit?url=' + url;
 var resubmitUrl = 'http://www.reddit.com/submit?resubmit=true&url=' + url;
@@ -56,7 +55,7 @@ $(document).ready(function(){
 
 // get URL info
 function getURLInfo(url){
-    var redditUrl = 'http://www.reddit.com/api/info.json?url=' +url;
+    var redditUrl = 'http://www.reddit.com/api/info.json?url=' + url;
     $.getJSON(
         redditUrl,
         parseURLData
@@ -152,10 +151,13 @@ function parseAge(entryDateMs){
     var submitted;
     var ageDays = Math.ceil((dateNow - entryDateMs) / oneDay);
     
-    if (ageDays <= 1){
+    if(ageDays <= 1){
         submitted = 'today';
     }
-    else {
+    else if(ageDays == 2){
+        submitted = 'yesterday';
+    }
+    else{
         submitted = ageDays + ' days ago';
     }
 

@@ -1,7 +1,7 @@
 {
-  "name": "Better Reddit Check",
+  "name": "Snoo Says Yes",
   "version": "1.2",
-  "description": "Instant visual feedback whether a URL has been submitted to Reddit. Easily join the discussion or submit right from the toolbar.",
+  "description": "FKA Better Reddit Check. Instant visual feedback whether a URL has been submitted to Reddit. Easily join the discussion or submit right from the toolbar.",
   "options_page": "options.html",
   "icons": {
       "16": "alien16.png",

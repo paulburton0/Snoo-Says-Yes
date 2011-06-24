@@ -1,18 +1,16 @@
-Better Reddit Check - a Chrome extension
+Snoo Says Yes (FKA Better Reddit Check) - a Chrome extension
 
 Receive instant visual feedback whether any URL has been submitted to Reddit.
-If the page you're on has been submitted, you can open a new tab to join the
-discussion, or you can resubmit the link. Otherwise, you can start a new
-submission right from the Chrome toolbar.
+If the page you're on has been submitted, you can open a new tab to join 
+the discussion, or you can resubmit the link. Otherwise, you can start 
+a new submission right from the Chrome toolbar.
 
-Better Reddit Check is based on the Reddit Check extension by Hrishikesh
-Bakshi. It is maintained by paulburton0 [at] gmail.com
-
-Better Reddit Check is distributed under the GNU General Public License - see
-the accompanying LICENSE file for more details.
+Snoo Says Yes is maintained by paulburton0 [at] gmail.com and is 
+distributed under the GNU General Public License - see the accompanying 
+LICENSE file for more details.
  
 Extension install link:
 https://chrome.google.com/extensions/detail/bnikifloagjncfjbniboapgdehnlemmd
 
 Source available at:
-https://github.com/paulburton0/Better-Reddit-Check
+https://github.com/paulburton0/Snoo-Says-Yes
