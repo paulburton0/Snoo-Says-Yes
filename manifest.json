@@ -1,6 +1,6 @@
 {
   "name": "Better Reddit Check",
-  "version": "1.1.1",
+  "version": "1.2",
   "description": "Instant visual feedback whether a URL has been submitted to Reddit. Easily join the discussion or submit right from the toolbar.",
   "options_page": "options.html",
   "icons": {

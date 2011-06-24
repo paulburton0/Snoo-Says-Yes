@@ -36,6 +36,22 @@ $(document).ready(function(){
             closePopup();
         });
     }
+
+    if(localStorage["openSubmission"] == 'submitSelectedTab'){
+        $('#submit_link').live('click', function(e){
+            var href = e.currentTarget.href;
+            chrome.tabs.update(tabId, {url: href});
+            closePopup();
+        });
+    }
+
+    if(localStorage["openSubmission"] == 'submitNewTab'){
+        $('#submit_link').live('click', function(e){
+            var href = e.currentTarget.href;
+            chrome.tabs.create({url: href, index: newIndex});
+            closePopup();
+        });
+    }
 });
 
 // get URL info
@@ -78,7 +94,7 @@ function parseURLData(jsonData){
 
         $('#data').append('<h4>' + title + '</h4>');
         $('#data').append('<div id="submission_status"><span id="submitnumber">submitted ' +
-            submitCount + ' ' + submissionLabel + ' | </span> <a target="_blank" title="Submit to reddit"' +
+            submitCount + ' ' + submissionLabel + ' | </span> <a id="submit_link" title="Submit to reddit"' +
             ' href="' + resubmitUrl + 
             '">resubmit</a></div>');
         
@@ -87,15 +103,19 @@ function parseURLData(jsonData){
     else{
         if(localStorage["hideStatus"] == 'hide'){
             $('#data').append('<h4>' + title + '</h4>');
-            $('#data').append('<div id="submission_status"><a target="_blank" title="Submit to reddit"' +
+            $('#data').append('<div id="submission_status"><a id="submit_link" title="Submit to reddit"' +
                 ' href="' + submitUrl + '">submit</a></div>');
         }
         else{
-            chrome.tabs.create({
-                url: submitUrl
-            });
+            if(localStorage["openSubmission"] == 'submitSelectedTab'){
+                chrome.tabs.update(tabId, {url: submitUrl});
+                closePopup();
+            }
 
-            window.close();
+            if(localStorage["openSubmission"] == 'submitNewTab'){
+                chrome.tabs.create({url: submitUrl, index: newIndex});
+                closePopup();
+            } 
         }
     }
 }

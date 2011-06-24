@@ -35,8 +35,24 @@ $(document).ready(function(){
         localStorage["openDiscussion"] = 'selectedTab';
     });
 
+    if(localStorage["openSubmission"] == 'submitNewTab'){
+        $('#submitInNewTab').attr('checked', 'checked');
+    }
+    else{
+        localStorage["openSubmission"] = 'submitSelectedTab';
+        $('#submitInSelectedTab').attr('checked', 'checked');
+    }
+
+    $('#submitInNewTab').click(function(){
+        localStorage["openSubmission"] = 'submitNewTab';
+    });
+
+    $('#submitInSelectedTab').click(function(){
+        localStorage["openSubmission"] = 'submitSelectedTab';
+    });
+
     $('.option').click(function(){
-        $('#save').fadeIn(1200, function(){$('#save').fadeOut(1200);});
+        $('#save').fadeIn(1000, function(){$('#save').fadeOut(1000);});
     });
 });
 
