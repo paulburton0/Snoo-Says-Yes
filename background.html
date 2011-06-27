@@ -5,6 +5,18 @@
 
         <script type="text/javascript">
 
+        if(localStorage["hideStatus"] === undefined){
+            localStorage["hideStatus"] = 'show';
+        }
+
+        if(localStorage["openDiscussion"] === undefined){
+            localStorage-"openDiscussion" = 'selectedTab';
+        }
+
+        if(localStorage["openSubmission"] === undefined){
+            localStorage["openSubmission"] = 'submitSelectedTab';
+        }
+
         var selectedTabId;
         var selectedURL;
         var selectedTitle;
