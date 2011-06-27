@@ -1,6 +1,6 @@
 {
   "name": "Snoo Says Yes",
-  "version": "1.4",
+  "version": "1.4.1",
   "description": "FKA Better Reddit Check. Instant feedback whether a URL has been submitted to Reddit. Join the discussion or submit from the toolbar",
   "options_page": "options.html",
   "icons": {
